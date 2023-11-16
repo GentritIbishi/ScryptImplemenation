@@ -1,0 +1,119 @@
+/* https://www.color-hex.com/color-palette/4666 */
+
+.root {
+    -fx-background-color: #1F3B4D;
+}
+
+.root, .root * {
+    -fx-font-size: 14px;
+    -fx-font-family: sans-serif;
+}
+
+.button {
+    -fx-text-fill: #000000;
+    -fx-background-color: #FFF;
+}
+
+.button:hover, .button:active, .button:focus {
+    -fx-background-color: #004c4c;
+    -fx-cursor: hand;
+}
+
+
+.loginButton {
+    -fx-background-color: #32BF84;
+    -fx-border-radius: 0;
+    -fx-font-size: 24;
+    -fx-text-fill: #FFF;
+    -fx-font-family: sans-serif;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+
+.label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.control-field {
+    -fx-border-color: #008080;
+    -fx-background-color: #1F3B4D;
+    -fx-border-radius: 0;
+    -fx-border-width: 2px;
+    -fx-text-fill: #FFF;
+    -fx-prompt-text-fill: #58656D;
+}
+
+.control-field {
+    -fx-border-color: #008080;
+    -fx-background-color: #1F3B4D;
+    -fx-border-radius: 0;
+    -fx-border-width: 2px;
+    -fx-text-fill: #FFF;
+    -fx-prompt-text-fill: #58656D;
+}
+
+.status-success {
+    -fx-border-color: #00FF00;
+    -fx-background-color: #00FF00;
+    -fx-border-radius: 0;
+    -fx-border-width: 2px;
+    -fx-text-fill: #000;
+    -fx-prompt-text-fill: #58656D;
+}
+
+.status-failed {
+    -fx-border-color: #008080;
+    -fx-background-color: #1F3B4D;
+    -fx-border-radius: 0;
+    -fx-border-width: 2px;
+    -fx-text-fill: #FFF;
+    -fx-prompt-text-fill: #58656D;
+}
+
+
+.minusClick:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #000000;
+}
+
+
+.table-view {
+    -fx-border-color: #008080;
+}
+
+.table-view .column-header {
+    -fx-background-color: #008080;
+    -fx-text-fill: white;
+}
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1.0;
+}
+
+.table-view .table-row-cell {
+    -fx-border-color: #b2d8d8;
+    -fx-table-cell-border-color:#b2d8d8;
+}
+
+.minimizeButton {
+    -fx-background-color: #1F3B4D;
+    -fx-text-fill: #FFF;
+}
+
+.maximizeButton {
+    -fx-background-color: #1F3B4D;
+    -fx-text-alignment: top;
+    -fx-text-fill: #FFF;
+}
+
+
+.xButton {
+    -fx-background-color: #1F3B4D;
+    -fx-text-alignment: center;
+    -fx-text-fill: #FFF;
+}
+
+
