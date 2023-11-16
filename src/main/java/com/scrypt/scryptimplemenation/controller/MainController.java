@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,34 +30,61 @@ public class MainController implements Initializable {
     private Label lab;
 
     @FXML
-    private TextField hashGeneratedField, booleanResultField, plaintextField, plaintextCheckField;
+    private TextField hashGeneratedField, booleanResultField,
+            plaintextField, plaintextCheckField, nField, rField, pField;
 
     @FXML
-    private Button btnEncrypt, btnCheck;
+    private Button btnGenerate, btnCheck;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
     @FXML
-    private void btnEncryptClicked(ActionEvent event) {
-
-        String plaintext = plaintextField.getText();
-
-        if (!(plaintext.length() > 6)) {
+    private void btnGenerateClicked(ActionEvent event) {
+        if (!(plaintextField.getText().length() > 6)) {
             lab.setText("Password Length should be bigger than 6 characters.");
             lab.setStyle("-fx-text-fill: #FF073A;");
         } else {
             try {
-                // generate password
-                generatedSecuredPasswordHash = SCryptUtil.scrypt(plaintext, 16, 16, 16);
+                // generate hash
 
-                // show the hashPassword to tView
-                hashGeneratedField.setText(generatedSecuredPasswordHash);
-                hashGeneratedField.setEditable(true);
-                hashGeneratedField.setDisable(false);
-                lab.setText("Hash Password has generated successfully!");
-                lab.setStyle("-fx-text-fill: #00FF00;");
+                if(nField.getText().matches("[0-9#]+"))
+                {
+                    lab.setText("Ensure that the 'N' parameter only consists of numerical values.");
+                    lab.setStyle("-fx-text-fill: #FF073A;");
+                }
+
+                if(pField.getText().matches("[0-9#]+"))
+                {
+                    lab.setText("Ensure that the 'P' parameter only consists of numerical values.");
+                    lab.setStyle("-fx-text-fill: #FF073A;");
+                }
+
+                if(rField.getText().matches("[0-9#]+"))
+                {
+                    lab.setText("Ensure that the 'R' parameter only consists of numerical values.");
+                    lab.setStyle("-fx-text-fill: #FF073A;");
+                }
+
+                if(plaintextField.getText().isEmpty())
+                {
+                    lab.setText("Require non-empty plaintext for hash generation.");
+                    lab.setStyle("-fx-text-fill: #FF073A;");
+                }
+                else {
+                    generatedSecuredPasswordHash = SCryptUtil.scrypt(plaintextField.getText(),
+                            Integer.parseInt(nField.getText()),
+                            Integer.parseInt(rField.getText()),
+                            Integer.parseInt(pField.getText()));
+
+                    // show the hashPassword to tView
+                    hashGeneratedField.setText(generatedSecuredPasswordHash);
+                    hashGeneratedField.setEditable(true);
+                    hashGeneratedField.setDisable(false);
+                    lab.setText("Hash Password has generated successfully!");
+                    lab.setStyle("-fx-text-fill: #00FF00;");
+                }
             }catch (Exception e) {
                 lab.setText(STATUS + ": "+e.getMessage());
             }
