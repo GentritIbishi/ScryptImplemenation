@@ -8,188 +8,125 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.scrypt.scryptimplemenation.utils.Constants.FALSE;
-import static com.scrypt.scryptimplemenation.utils.Constants.TRUE;
+import static com.scrypt.scryptimplemenation.utils.Constants.*;
 
 
 public class MainController implements Initializable {
-
     private double x, y;
-
-    private String password = "", passwordCheck = "";
+    private String status;
     private String generatedSecuredPasswordHash = "";
     @FXML
-    private ImageView scryptImage, imgEyeForPassword, imgEyeForPasswordCheck, imgEyeHideForPassword, imgEyeHideForPasswordCheck;
+    private ImageView scryptImage;
 
     @FXML
     private Label lab;
 
     @FXML
-    private TextField hashGeneratedField, booleanResultField, passwordTextFieldUnlocked, passwordCheckTextFieldUnlocked;
-    @FXML
-    private PasswordField passwordField, passwordCheckField;
+    private TextField hashGeneratedField, booleanResultField, plaintextField, plaintextCheckField;
 
     @FXML
     private Button btnEncrypt, btnCheck;
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {}
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    }
 
     @FXML
-    private void btnEncryptClicked(ActionEvent event) throws Exception {
+    private void btnEncryptClicked(ActionEvent event) {
 
-        String password = passwordField.getText();
-        String testing = passwordTextFieldUnlocked.getText();
+        String plaintext = plaintextField.getText();
 
-        if (!(passwordField.getText().length() > 6)) {
+        if (!(plaintext.length() > 6)) {
             lab.setText("Password Length should be bigger than 6 characters.");
             lab.setStyle("-fx-text-fill: #FF073A;");
         } else {
-            // generate password
-            generatedSecuredPasswordHash = SCryptUtil.scrypt(password, 16, 16, 16);
+            try {
+                // generate password
+                generatedSecuredPasswordHash = SCryptUtil.scrypt(plaintext, 16, 16, 16);
 
-            // show the hashPassword to tView
-            hashGeneratedField.setText(generatedSecuredPasswordHash);
-            hashGeneratedField.setEditable(true);
-            hashGeneratedField.setDisable(false);
-            lab.setText("Hash Password has generated successfully!");
-            lab.setStyle("-fx-text-fill: #008000;");
+                // show the hashPassword to tView
+                hashGeneratedField.setText(generatedSecuredPasswordHash);
+                hashGeneratedField.setEditable(true);
+                hashGeneratedField.setDisable(false);
+                lab.setText("Hash Password has generated successfully!");
+                lab.setStyle("-fx-text-fill: #00FF00;");
+            }catch (Exception e) {
+                lab.setText(STATUS + ": "+e.getMessage());
+            }
         }
 
     }
 
 
     @FXML
-    private void btnCheckClicked(ActionEvent event) throws Exception {
+    private void btnCheckClicked(ActionEvent event) {
 
-        String passwordForCheck = passwordCheckField.getText();
+        String plaintextCheck = plaintextCheckField.getText();
 
-        if (passwordForCheck.isEmpty()) {
-            lab.setText("Password shouldn't be empty!");
+        if (plaintextCheck.isEmpty()) {
+            lab.setText("Plaintext for checking shouldn't be empty!");
             lab.setStyle("-fx-text-fill: #FF073A;");
-        } else if (!(passwordForCheck.length() > 6)) {
+        } else if (!(plaintextCheck.length() > 6)) {
             lab.setText("Character size limit is bigger than six.!");
             lab.setStyle("-fx-text-fill: #FF073A;");
+        } else if (hashGeneratedField.getText().isEmpty()) {
+            lab.setText("You should have the hash for checking.!");
+            lab.setStyle("-fx-text-fill: #FF073A;");
         } else {
-            // do the checking
-            if (generatedSecuredPasswordHash.isEmpty()) {
-                lab.setText("You should have the hash for checking.!");
-                lab.setStyle("-fx-text-fill: #FF073A;");
-            } else {
-                boolean matched = SCryptUtil.check(passwordForCheck, generatedSecuredPasswordHash);
+            try {
+                // do the checking
+                boolean matched = SCryptUtil.check(plaintextCheckField.getText(), hashGeneratedField.getText());
                 if (matched) {
                     booleanResultField.setText(TRUE);
-                    lab.setText("Checking DONE!");
-                    lab.setStyle("-fx-text-fill: #008000;");
+                    booleanResultField.setStyle("    -fx-border-color: #00FF00;\n" +
+                            "    -fx-background-color: #00FF00;\n" +
+                            "    -fx-border-radius: 0;\n" +
+                            "    -fx-border-width: 2px;\n" +
+                            "    -fx-text-fill: #000;\n" +
+                            "    -fx-prompt-text-fill: #58656D;");
+                    lab.setText(STATUS_TRUE);
+                    lab.setStyle("-fx-text-fill: #19ea19;");
                 } else {
                     booleanResultField.setText(FALSE);
-                    booleanResultField.setText(TRUE);
-                    lab.setText("Checking DONE!");
+                    booleanResultField.setStyle(" -fx-border-color: red;\n" +
+                            "    -fx-background-color: red;\n" +
+                            "    -fx-border-radius: 0;\n" +
+                            "    -fx-border-width: 2px;\n" +
+                            "    -fx-text-fill: #000;\n" +
+                            "    -fx-prompt-text-fill: #000;");
+                    lab.setText(STATUS_FALSE);
+                    lab.setStyle("-fx-text-fill: #ec0b0b;");
                 }
                 booleanResultField.setEditable(false);
                 booleanResultField.setDisable(true);
                 booleanResultField.setCursor(Cursor.HAND);
+            }catch (Exception e) {
+                lab.setText(STATUS + ": "+e.getMessage());
             }
         }
     }
 
     @FXML
-    private void imgEyeHideForPasswordCheckClicked(ActionEvent event) throws Exception {
-        if (imgEyeHideForPasswordCheck.isVisible()) {
-            // update passwordCheckTextFieldUnlocked with value of passwordCheckField
-            passwordCheckTextFieldUnlocked.setText(passwordCheckField.getText());
+    private void plaintextCheckFieldClicked(ActionEvent event) throws Exception {
 
-            //update the password
-            passwordField.setText(passwordCheckField.getText());
-            //show password word
-            passwordCheckTextFieldUnlocked.setText(passwordCheckField.getText());
-            passwordCheckTextFieldUnlocked.setVisible(false);
-            passwordCheckField.setVisible(true);
-            // change image
-            imgEyeForPasswordCheck.setVisible(true);
-            imgEyeHideForPasswordCheck.setVisible(false);
-        }
     }
 
     @FXML
-    private void imgEyeHideForPasswordClicked(ActionEvent event) throws Exception {
-        if (imgEyeHideForPassword.isVisible()) {
-            // update passwordField with value of passwordTextFieldUnlocked
-            passwordField.setText(passwordTextFieldUnlocked.getText());
-
-            //show password word
-            passwordTextFieldUnlocked.setText(passwordField.getText());
-            passwordTextFieldUnlocked.setVisible(false);
-            passwordField.setVisible(true);
-            // change image
-            imgEyeForPassword.setVisible(true);
-            imgEyeHideForPassword.setVisible(false);
-        }
-    }
-
-    @FXML
-    private void passwordCheckTextFieldUnlockedClicked(ActionEvent event) throws Exception {
-    }
-
-    @FXML
-    private void imgEyeForPasswordClicked(ActionEvent event) throws Exception {
-        if (imgEyeForPassword.isVisible()) {
-
-            // update passwordTextFieldUnlocked with value of passwordField
-            passwordTextFieldUnlocked.setText(passwordField.getText());
-
-            //show password word
-            passwordTextFieldUnlocked.setText(passwordField.getText());
-            passwordTextFieldUnlocked.setVisible(true);
-            passwordField.setVisible(false);
-            // change image
-            imgEyeForPassword.setVisible(false);
-            imgEyeHideForPassword.setVisible(true);
-        }
-    }
-
-    @FXML
-    private void imgEyeForPasswordCheckClicked(ActionEvent event) throws Exception {
-        if (imgEyeForPasswordCheck.isVisible()) {
-            // update passwordCheckField with value of passwordCheckTextFieldUnlocked
-            passwordCheckField.setText(passwordCheckTextFieldUnlocked.getText());
-
-            //show password word
-            passwordCheckTextFieldUnlocked.setText(passwordCheckField.getText());
-            passwordCheckTextFieldUnlocked.setVisible(true);
-            passwordCheckField.setVisible(false);
-            // change image
-            imgEyeForPasswordCheck.setVisible(false);
-            imgEyeHideForPasswordCheck.setVisible(true);
-        }
-    }
-
-    @FXML
-    private void passwordTextFieldUnlockedClicked(ActionEvent event) throws Exception {
+    private void plaintextFieldClicked(ActionEvent event) throws Exception {
 
     }
 
     @FXML
     private void hashGeneratedFieldClicked(ActionEvent event) throws Exception {
-    }
-
-    @FXML
-    private void passwordFieldClicked(ActionEvent event) throws Exception {
-
-    }
-
-    @FXML
-    private void passwordCheckFieldClicked(ActionEvent event) throws Exception {
-
     }
 
     @FXML
@@ -223,4 +160,11 @@ public class MainController implements Initializable {
         primaryStage.close();
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

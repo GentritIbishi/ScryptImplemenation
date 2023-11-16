@@ -2,12 +2,15 @@ package com.scrypt.scryptimplemenation.utils;
 
 import com.lambdaworks.codec.Base64;
 import com.lambdaworks.crypto.SCrypt;
+import com.scrypt.scryptimplemenation.controller.MainController;
+import javafx.scene.control.Label;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 
 public class SCryptUtil {
+
     public SCryptUtil() {
     }
 
