@@ -92,7 +92,7 @@ Real hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfD
 Part that is remove: $iDxegp1W
 ```
 ```java
-Hash with remove a part from hash: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==vrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
+Hash with removed a part from hash: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==vrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
 ```
 
 ## Preview
