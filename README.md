@@ -15,6 +15,15 @@ This repository contains a Java implementation of the Scrypt algorithm. Scrypt i
   
 - **Usage Examples:** The repository includes examples and usage guidelines to help you integrate the Scrypt implementation into your Java projects securely.
 
+## Configuration
+
+Adjust the Scrypt parameters in the code according to your security requirements. The most common parameters are N, r, and p.
+
+```java
+int N = 16384; // CPU/Memory cost
+int r = 8;     // Block size
+int p = 1;     // Parallelization factor
+
 ## Getting Started
 
 Follow these steps to get started with the Scrypt implementation:
