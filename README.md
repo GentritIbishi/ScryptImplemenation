@@ -41,7 +41,15 @@ int p = 1;     // Parallelization factor
 
 ### Input
 
-#### Plaintext: 123abcdefab
+```java
+Plaintext: 123abcdefab
+```
+
+### Output
+
+```java
+Hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
+```
 
 
 
