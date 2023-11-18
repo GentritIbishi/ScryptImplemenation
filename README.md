@@ -31,4 +31,9 @@ Adjust the Scrypt parameters in the code according to your security requirements
 int N = 16384; // CPU/Memory cost
 int r = 8;     // Block size
 int p = 1;     // Parallelization factor
+```
+
+## Preview of Application
+
+![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/1.png)
 
