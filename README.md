@@ -51,6 +51,10 @@ Plaintext: 123abcdefab
 Hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
 ```
 
+## Preview Example in Application
+
+![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/2.png)
+
 
 
 
