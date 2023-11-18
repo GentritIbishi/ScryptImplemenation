@@ -1,4 +1,5 @@
 # Scrypt Implementation in Java
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/LICENSE.txt)
 
 ## Overview
 
