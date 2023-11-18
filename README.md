@@ -65,7 +65,7 @@ Using same hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wc
 ```
 ## Preview
 
-
+![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/3.png)
 
 
 
