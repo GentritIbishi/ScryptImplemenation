@@ -79,3 +79,16 @@ Using same hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wc
 
 ![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/4.png)
 
+## Example Checking with same Plaintext but different Hash Generated(removed a part from hash) in Application
+
+```java
+Using different plaintext for checking: 123abcdefab
+```
+```java
+Real hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
+Part that is remove: $iDxegp1W
+Hash with remove a part from hash: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==vrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
+```
+## Preview
+
+![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/5.png)
