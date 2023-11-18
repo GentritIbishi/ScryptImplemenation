@@ -37,7 +37,7 @@ int p = 1;     // Parallelization factor
 
 ![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/1.png)
 
-## Example
+## Example Hash Generating in Application
 
 ### Input
 
@@ -51,9 +51,19 @@ Plaintext: 123abcdefab
 Hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
 ```
 
-## Example in Application
+## Preview
 
 ![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/2.png)
+
+## Example Checking Hash Generated with same Plaintext in Application
+
+```java
+Using same plaintext for checking: 123abcdefab
+```
+```java
+Using same hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
+```
+## Preview
 
 
 
