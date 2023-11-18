@@ -37,3 +37,6 @@ int p = 1;     // Parallelization factor
 
 ![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/1.png)
 
+## Example
+
+### Input
