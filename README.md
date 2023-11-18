@@ -67,5 +67,15 @@ Using same hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wc
 
 ![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/3.png)
 
+## Example Checking Hash Generated with different Plaintext in Application
 
+```java
+Using different plaintext for checking: 123abcdefabtesting
+```
+```java
+Using same hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
+```
+## Preview
+
+![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/4.png)
 
