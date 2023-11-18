@@ -9,9 +9,9 @@ This repository contains a Java implementation of the Scrypt algorithm. Scrypt i
 
 - **Scrypt Algorithm Implementation:** The core of this application is the implementation of the Scrypt algorithm, providing a secure and efficient key derivation function.
   
-- **JavaFX User Interface:** The project includes a JavaFX-based user interface, allowing for easy interaction with the Scrypt implementation.
-  
 - **Configurable Parameters:** The implementation allows you to configure various parameters of the Scrypt algorithm, such as N (CPU/memory cost), r (block size), and p (parallelization factor).
+
+- **JavaFX User Interface:** The project includes a JavaFX-based user interface, allowing for easy interaction with the Scrypt implementation.
   
 - **Usage Examples:** The repository includes examples and usage guidelines to help you integrate the Scrypt implementation into your Java projects securely.
 
