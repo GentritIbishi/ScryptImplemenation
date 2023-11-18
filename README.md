@@ -20,6 +20,7 @@ This repository contains a Java implementation of the Scrypt algorithm. Scrypt i
 Follow these steps to get started with the Scrypt implementation:
 
 1. **Clone the Repository:**
+   
    ```bash
    git clone https://github.com/your-username/scrypt-java-implementation.git
 
@@ -86,9 +87,14 @@ Using different plaintext for checking: 123abcdefab
 ```
 ```java
 Real hash generated: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==$iDxegp1WvrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
+```
+```java
 Part that is remove: $iDxegp1W
+```
+```java
 Hash with remove a part from hash: $s0$e0801$eJFXz84VUfLMr/w+pvf9Aw==vrKCmJU8wcNHyCfDe6hqvK9XoTJmuy031Ac=
 ```
+
 ## Preview
 
 ![Preview](https://github.com/GentritIbishi/ScryptImplemenation/blob/master/screenshots/5.png)
