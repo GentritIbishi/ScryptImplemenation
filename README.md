@@ -40,3 +40,10 @@ int p = 1;     // Parallelization factor
 ## Example
 
 ### Input
+
+#### Plaintext: 123abcdefab
+
+
+
+
+
